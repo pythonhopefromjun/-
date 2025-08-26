@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>타이핑 애니메이션</title>
+<style>
+  body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+  }
+  .text-container {
+    font-size: 2em;
+    border-right: 2px solid #fff;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+<div class="text-container" id="text"></div>
+
+<script>
+  const message = "Hey! 이민준바보?";
+  const textEl = document.getElementById("text");
+  let index = 0;
+
+  function type() {
+    if (index < message.length) {
+      textEl.innerHTML += message.charAt(index);
+      index++;
+      setTimeout(type, 100); // 글자 나오는 속도 (ms)
+    } else {
+      setTimeout(() => {
+        textEl.innerHTML = "";
+        index = 0;
+        type();
+      }, 2000); // 2초 후 반복
+    }
+  }
+
+  type();
+</script>
+</body>
+</html>
